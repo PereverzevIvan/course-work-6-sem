@@ -1,4 +1,5 @@
-run: clean base lemmas
+# Осторожно: из-за операции translate может работать очень долго
+run: base lemmas translate poetry
 
 base:
 	@mkdir -p \
@@ -18,6 +19,19 @@ lemmas:
 		./results/tables/lemmas
 
 	@python ./lemmas.py
+
+# Осторожно: из-за запросов к внешнему api может работать очень медленно
+translate:
+	@mkdir -p \
+		./results/translate
+
+	@python ./translate.py
+
+poetry:
+	@mkdir -p \
+		./results/poetry
+
+	@python ./poetry.py
 
 test:
 	@python ./test.py

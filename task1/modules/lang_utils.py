@@ -26,8 +26,11 @@ def is_valid_word(word: str) -> bool:
 
 def detect_language(word: str) -> str | None:
     """Определяет язык слова ('ru' для русского, 'en' для английского)."""
-    lang = langid.classify(word)[0]
-    return "ru" if lang == "ru" else "en"
+    if en_dict.check(word):
+        return "en"
+    elif ru_dict.check(word):
+        return "ru"
+    return langid.classify(word)[0]
 
 
 def lemmatize_word(word: str, lang: str) -> str:
