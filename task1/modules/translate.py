@@ -18,7 +18,7 @@ def translate_word(word: str) -> list:
 
 
 def generate_translation_dict(input_file: str, output_file: str):
-    """Создаёт словарь переводов для английских слов."""
+    """Принимает на вход файл, считывает из него все слова и создаёт словарь переводов для английских слов."""
     translation_dict = {}
 
     text = utils.read_text_file(input_file)

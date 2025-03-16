@@ -4,9 +4,11 @@ from typing import Any, Dict, List
 from collections import Counter
 from modules.lang_utils import stop_words_en, stop_words_ru, is_valid_word
 
+# В этом файле хранятся функции, которые могут быть переиспользованы в других модулях
+
 
 def clean_text(text: str):
-    """Очищает текст: приводит к нижнему регистру, убирает знаки препинания (кроме дефиса) и цифры."""
+    """Очищает текст: приводит к нижнему регистру, убирает знаки препинания (кроме дефиса)."""
 
     text = text.lower()
     # Убираем знаки препинания, кроме дефиса

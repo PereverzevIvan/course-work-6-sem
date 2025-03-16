@@ -2,7 +2,7 @@ from modules import utils
 
 
 def generate_reverse_dict(input_file: str, output_file: str):
-    """Создаёт обратный словарь из текста."""
+    """Принимает на вход файл, считывает из него все слова и создаёт обратный словарь из текста."""
     text = utils.read_text_file(input_file)
     text = utils.clean_text(text)
     words = utils.tokenize(text)

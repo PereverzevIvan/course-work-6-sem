@@ -4,6 +4,11 @@ from modules.lang_utils import detect_language, lemmatize_word
 
 
 def save_lemmas_info(input_file: str, lemma_and_forms_file: str, slovnik_file: str):
+    """Принимает на вход название файла, считывает из него все слова,
+    определяет их леммы и сохраняет в системе два файла:
+    - в первом хранятся леммы и их словоформы,
+    - а во втором - все леммы и частота их встречи
+    """
     lemmas: List[str] = []  # Все леммы для  формирования частотного словника
     lemma_dict: Dict[str, List[str]] = {}  # Для хранения лемм и их словоформ
 

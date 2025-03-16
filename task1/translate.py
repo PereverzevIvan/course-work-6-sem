@@ -7,6 +7,10 @@ translate_dir = result_dir + "/translate/"
 
 
 def process_files(folder_path):
+    """Принимает на вход папку каталог, в котором хранятся файлы для обработки,
+    считывает из них все слова и создает словари с переводом английских слов.
+    """
+
     # Проверка, существует ли папка
     if not os.path.exists(folder_path):
         print(f"Папка '{folder_path}' не найдена.")

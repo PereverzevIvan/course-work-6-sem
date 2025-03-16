@@ -1,9 +1,9 @@
-from matplotlib.ticker import MultipleLocator
 import pandas as pd
 import matplotlib.pyplot as plt
 
 
 def plot_frequency_distribution(input_file, output_file):
+    """Создает график изменения частот в соответствии с рангами и сохраняет его в файловой системе"""
     # Загрузка данных из CSV файла
     df = pd.read_csv(input_file)
 
@@ -32,6 +32,7 @@ def plot_frequency_distribution(input_file, output_file):
 
 
 def plot_normalize_frequency_distribution(input_file, output_file):
+    """Создает график изменения нормализованных частот в соответствии с нормализованными рангами и сохраняет его в файловой системе"""
     # Загрузка данных из CSV файла
     df = pd.read_csv(input_file)
 

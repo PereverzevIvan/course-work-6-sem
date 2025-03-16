@@ -10,6 +10,9 @@ normalize_graphics_dir = result_dir + "/graphics/base/normalize/"
 
 
 def process_files(folder_path):
+    """Принимает на вход папку каталог, в котором хранятся файлы для обработки,
+    создает для них словники, таблицы с частотными характеристиками, графики изменения частоты.
+    """
     # Проверка, существует ли папка
     if not os.path.exists(folder_path):
         print(f"Папка '{folder_path}' не найдена.")
