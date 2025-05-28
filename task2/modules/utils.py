@@ -2,6 +2,7 @@ from modules.lang_tools import spacy_stop_words_ru, spacy_stop_words_en
 import re
 import csv
 from itertools import zip_longest
+from typing import Dict, List, Any
 
 
 def clean_text(text: str):
@@ -34,3 +35,49 @@ def save_named_index_to_csv_by_column(
 
         for row in rows:
             writer.writerow(row)
+
+
+def save_contexts_to_csv(contexts: Dict[str, List[Dict[str, Any]]], output_path: str) -> None:
+    """
+    Сохраняет контексты n-грамм в CSV файл.
+    
+    Args:
+        contexts: Словарь с контекстами в формате:
+            {
+                "ngram1": [
+                    {
+                        "sentence": "Предложение с n-граммой",
+                        "context": ["Предложение до", "Предложение после"]
+                    },
+                    ...
+                ],
+                ...
+            }
+        output_path: Путь к выходному CSV файлу
+        
+    CSV формат:
+    N-грамма | Предложение | Контекст до | Контекст после
+    """
+    with open(output_path, "w", newline="", encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        # Записываем заголовки
+        writer.writerow(["N-грамма", "Предложение", "Контекст до", "Контекст после"])
+        
+        # Для каждой n-граммы
+        for ngram, occurrences in contexts.items():
+            # Для каждого вхождения n-граммы
+            for occurrence in occurrences:
+                sentence = occurrence["sentence"]
+                context = occurrence["context"]
+                
+                # Разделяем контекст на "до" и "после"
+                context_before = " ".join(context[:len(context)//2])
+                context_after = " ".join(context[len(context)//2:])
+                
+                # Записываем строку
+                writer.writerow([
+                    ngram,
+                    sentence,
+                    context_before,
+                    context_after
+                ])

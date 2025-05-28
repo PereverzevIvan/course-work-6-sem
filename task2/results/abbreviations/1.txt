@@ -1,11 +1,11 @@
-FTK
+УДК
 AIX
-DOI
+PC
+FTK
 URL
 РС
-УДК
-PC
 NAND
+DOI
 USB
 МГТУ
 OS
