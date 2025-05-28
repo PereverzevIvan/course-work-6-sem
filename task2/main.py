@@ -17,21 +17,21 @@ def process_text(path: str):
     with open(path, "r", encoding="utf-8") as f:
         text = f.read()
 
-        ngrams = get_top_ngrams(text, 1, 200)
-        ngrams = ngrams + get_top_ngrams(text, 2, 200)
-        ngrams = ngrams + get_top_ngrams(text, 3, 200)
+        # ngrams = get_top_ngrams(text, 1, 200)
+        # ngrams = ngrams + get_top_ngrams(text, 2, 200)
+        # ngrams = ngrams + get_top_ngrams(text, 3, 200)
 
-        utils.write_lines_to_file(list(set(ngrams)), f"./results/ngrams/{filename}.txt")
+        # utils.write_lines_to_file(list(set(ngrams)), f"./results/ngrams/{filename}.txt")
 
         # abbrs = extract_multilang_abbreviations(text)
         # utils.write_lines_to_file(
             # list(abbrs), f"./results/abbreviations/{filename}.txt"
         # )
 
-        # name_index = create_named_index(text)
-        # utils.save_named_index_to_csv_by_column(
-            # name_index, f"./results/named_entities/{filename}.csv"
-        # )
+        name_index = create_named_index(text)
+        utils.save_named_index_to_csv_by_column(
+            name_index, f"./results/named_entities/{filename}.csv"
+        )
 
         # terms = extract_top_n_percent_terms(
             # f"./assets/slovniks/{filename}.json", f"./results/ngrams/{filename}.txt", 30
@@ -107,11 +107,11 @@ texts_path = "../texts/txt/"
 for i in range(1, 2):
     process_text(f"{texts_path}{i}.txt")
     
-    contexts = find_context_process(
-        text_path=f"{texts_path}{i}.txt",
-        ngrams_file_path=f"./results/ngrams/{i}.txt",
-        window_size=1
-    )
+    # contexts = find_context_process(
+        # text_path=f"{texts_path}{i}.txt",
+        # ngrams_file_path=f"./results/ngrams/{i}.txt",
+        # window_size=1
+    # )
 
 
     

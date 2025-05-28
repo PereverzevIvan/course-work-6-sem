@@ -20,8 +20,22 @@ ru_dict = enchant.Dict("ru_RU")  # Русский словарь
 
 
 def is_valid_word(word: str) -> bool:
-    """Проверяет, правильно ли записано слово. Не обрабатывает аббревиатуры (например: usb)"""
-    return en_dict.check(word) or ru_dict.check(word)
+    """
+    Проверяет, является ли слово валидным.
+    """
+    # Проверяем длину
+    if len(word) < 2:
+        return False
+        
+    # Проверяем, что слово содержит хотя бы одну букву
+    if not any(c.isalpha() for c in word):
+        return False
+        
+    # Проверяем на спецсимволы в начале или конце
+    if not (word[0].isalnum() and word[-1].isalnum()):
+        return False
+        
+    return True
 
 
 def detect_language(word: str) -> str | None:
